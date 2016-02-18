@@ -1,14 +1,17 @@
+package login;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import login.controller.LoginController;
 
 /**
  * Created by Jennica on 18/02/2016.
  */
-public class Driver extends Application {
+public class DriverMain extends Application {
 
     public static Stage primaryStage;
     private Parent root;
@@ -22,6 +25,27 @@ public class Driver extends Application {
             this.primaryStage.setTitle("CALVIS SHOP");
 
             initRootLayout();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showUserOrder() {
+        try {
+            // Load root layout from fxml file
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/user_order_page.fxml"));
+            Parent userOrderLayout = (BorderPane) loader.load();
+
+            primaryStage.setScene(new Scene(userOrderLayout));
+            primaryStage.setTitle("CALVIS USER ORDER");
+            primaryStage.setResizable(false);
+            primaryStage.show();
+
+//            WorkspaceController workspaceController = loader.getController();
+//            EnvironmentConfigurator environment = environmentConfigurator;
+//            workspaceController.buildSystem(environment);
+//            workspaceController.displayDefaultWindows();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,6 +81,7 @@ public class Driver extends Application {
     }
 
     public static void main(String[] args) {
+        LoginController loginController = new LoginController();
         launch(args);
     }
 }
