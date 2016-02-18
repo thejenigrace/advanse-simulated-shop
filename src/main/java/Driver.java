@@ -13,6 +13,7 @@ public class Driver extends Application {
     public static Stage primaryStage;
     private Parent root;
     private FXMLLoader loader;
+    private int d = 4;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
